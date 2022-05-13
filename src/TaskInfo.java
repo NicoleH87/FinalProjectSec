@@ -9,7 +9,7 @@ public class TaskInfo {
     private int year;
     private boolean priority;
     private boolean simple;
-    private String type;
+    private String type; // Maybe change this into a number given an arraylist of options
 
     public TaskInfo(String task, String notes, int month, int day, int year, boolean priority, boolean simple, String type) {
         this.task = task;
@@ -36,5 +36,36 @@ public class TaskInfo {
         return find;
     }
 
+    public String getTask () {
+        return task;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public String getMonth() {
+        return monthNumConversion(month);
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public boolean isPriority() {
+        return priority;
+    }
+
+    public boolean isSimple() {
+        return simple;
+    }
+
+    public String getType() {
+        return type;
+    }
 
 }
