@@ -60,12 +60,18 @@ public class TaskInfo {
         return priority;
     }
 
+    public void setPriority(boolean choice) { priority = choice; }
+
     public boolean isSimple() {
         return simple;
     }
 
     public String getType() {
         return type;
+    }
+
+    public void print() {
+
     }
 
 }

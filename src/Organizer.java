@@ -17,6 +17,10 @@ public class Organizer {
         tasks.remove(n);
     }
 
+    public ArrayList<TaskInfo> returnTask() {
+        return tasks;
+    }
+
     public ArrayList<TaskInfo> dueLater () {
         ArrayList<TaskInfo> later = new ArrayList<TaskInfo>();
         for (TaskInfo t : tasks) {

@@ -4,41 +4,43 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
         String[] months = new String[];
         months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        ArrayList<String> sections = new ArrayList<String> ();
+        Organizer organize = new Organizer();
+        ArrayList<String> categories = new ArrayList<String> ();
         try {
             File f = new File("myfile.txt");
             Scanner s = new Scanner(f);
-            int inChoice = 0;
-            while (inChoice > 0 && inChoice < 5) {
-                System.out.println("What action would you like to commit to?");
-                System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4)Edit Category List");
-                inChoice = s.nextInt();
-            }
-            if (inChoice == 1) {
-                //copy and paste
-            }
-            else if (inChoice == 2) {
-                //List tasks and their info (in a particular print format), choices on which to edit, confirmation of editing, confirmation and restating initial
-            }
-            else if (inChoice == 3) {
-                //List task, which task was completed
-            }
-            else {
-                //list category, change/delete/add option
-            }
+
+
+
         }
         catch (FileNotFoundException e) {
             System.out.println(" -----Task Planner----- ");
-
+            Scanner s = new Scanner(System.in);
             //Ask about categories and keep adding, prints the complete list each time a complete addition is added. There will also be an option later on the fix if necessary (delete / replace).
-            System.out.println("Categories");
+            System.out.println("Input individual categories (folder). Enter \"x\" when completed");
+            String in = s.nextLine();
+            while (!in.toLowerCase().equals("x")) {
+                System.out.println("Enter category name: ");
+                categories.add(s.nextLine());
+                System.out.println("Enter \" \" to continue or \"x\" to stop.");
+            }
+
+            System.out.println("Select a category for your task");
+            for (int i = 0; i < categories.size(); i++) {
+                System.out.println("(" + i + 1 + ") " + categories.get(i));
+            }
+            int category = s.nextInt();
+            String type = categories.get(category);
 
             System.out.println("What task would you like to add?");
-            Scanner s = new Scanner(System.in);
+
             String task = s.nextLine();
             System.out.println("Would you like to add any notes");
             String choice = s.nextLine();
@@ -89,9 +91,19 @@ public class Runner {
                         date = s.nextInt();
                     }
             }
+            System.out.println("is Priority? (y/n)");
+            String pString = s.nextLine();
+            boolean priority = false;
+            if (pString.equals("y")) {
+                 priority = true;
+            }
             System.out.println("Simple task? (y/n)");
-            String simple = s.nextLine();
+            String sString = s.nextLine();
+            boolean simple = false;
+            if (sString.equals("y")) {
+                simple = true;
+            }
+            TaskInfo newTask = new TaskInfo (task, note, month, date, year, priority, simple, type);
         }
-
     }
 }
