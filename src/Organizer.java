@@ -24,7 +24,7 @@ public class Organizer {
     public ArrayList<TaskInfo> dueLater () {
         ArrayList<TaskInfo> later = new ArrayList<TaskInfo>();
         for (TaskInfo t : tasks) {
-            if (t.getYear() >= )
+            if (t.getYear() >= 0) {}
         }
     }
 }

@@ -71,7 +71,7 @@ public class TaskInfo {
     }
 
     public void print() {
-
+        System.out.println("Type: " + type + "\nTask: " + task + "\nNotes: " + notes + "\nDate: " + month + "/" + day + "/" + year + "\nPriority: " + priority + "\nSimple: " + simple);
     }
 
 }

@@ -3,6 +3,8 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class TaskCreator {
+    private ArrayList<String> categories = new ArrayList<String> ();
+    private String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public TaskCreator() {};
 

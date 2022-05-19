@@ -8,17 +8,13 @@ import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
-        String[] months = new String[];
-        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         ArrayList<String> sections = new ArrayList<String> ();
         Organizer organize = new Organizer();
         ArrayList<String> categories = new ArrayList<String> ();
         try {
             File f = new File("myfile.txt");
             Scanner s = new Scanner(f);
-
-
-
         }
         catch (FileNotFoundException e) {
             System.out.println(" -----Task Planner----- ");
