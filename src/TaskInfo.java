@@ -44,8 +44,8 @@ public class TaskInfo {
         return notes;
     }
 
-    public String getMonth() {
-        return monthNumConversion(month);
+    public int getMonth() {
+        return month;
     }
 
     public int getDay() {
