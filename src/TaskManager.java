@@ -1,9 +1,11 @@
 import java.util.ArrayList;
-public class TaskManager {
-    private ArrayList<TaskInfo> taskList = new ArrayList<TaskInfo> ();
+import java.util.Arrays;
 
-    public TaskManager (ArrayList<TaskInfo> taskList) {
-        this.taskList = taskList;
+public class TaskManager {
+    private ArrayList<TaskInfo> taskList;
+
+    public TaskManager () {
+        taskList = new ArrayList<TaskInfo> ();
     }
 
     public void addTask(TaskInfo task) {
@@ -17,5 +19,10 @@ public class TaskManager {
             System.out.println("(" + i + 1 + ")" + taskList.get(i));
         }
     }
+
+    public void editTask(int num, TaskInfo task) {
+        taskList.set(num-1, task);
+    }
+
 
 }

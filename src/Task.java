@@ -11,7 +11,7 @@ public class Task {
 
     public void saveData() {
         try {
-            File f = new File("\Users\BT_1E10_06\IdeaProjects\Nicole Huang\FinalProject\src\task.data");
+            File f = new File(.txt);
             f.createNewFile();
 
         }

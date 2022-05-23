@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class CreateTask {
     private ArrayList<String> categories = new ArrayList<String> ();
+    private TaskManager manage = new TaskManager();
     private String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public CreateTask() {};
@@ -89,45 +90,73 @@ public class CreateTask {
                 simple = true;
             }
             TaskInfo newTask = new TaskInfo (task, note, month, date, year, priority, simple, type);
+            manage.addTask(newTask);
         }
         else if (inChoice == 2) {
             //List tasks and their info (in a particular print format), choices on which to edit, confirmation of editing, confirmation and restating initial
-            ArrayList<TaskInfo> task = new ArrayList<TaskInfo> (); // change this somehow
-            for (int i = 0; i < task.size(); i++) {
-                System.out.println("(" + i + 1 + ") " + task.get(i));
+            int taskNumChoice = 0;
+            ArrayList<TaskInfo> task = manage.getTask();
+            while (taskNumChoice <= task.size() && taskNumChoice > 0) {
+                for (int i = 0; i < task.size(); i++) {
+                    System.out.println("(" + i + 1 + ") " + task.get(i));
+                }
+                System.out.println("Select task to edit: ");
+                taskNumChoice = s.nextInt();
             }
-            System.out.println("Select task to edit: ");
-            int num = s.nextInt();
+
             //Check between range of options
-            System.out.println("What would you like to replace?");
-            System.out.println("(1) Section: " + task.get(num).getType());
-            System.out.println("(2) Task: " + task.get(num).getTask());
-            System.out.println("(3) Notes: " + task.get(num).getNotes());
-            System.out.println("(4) Due Date: " + task.get(num).getMonth() + "/" + task.get(num).getDay() + task.get(num).getYear());
-            System.out.println("(5) Priority: " + task.get(num).isPriority());
-            //Check response between range
-            int num2 = s.nextInt();
+            int choice2 = 0;
+            while (choice2 <= 5 && choice2 > 0) {
+                TaskInfo t = task.get(taskNumChoice);
+                System.out.println("What would you like to replace?");
+                System.out.println("(1) Section: " + t.getType());
+                System.out.println("(2) Task: " + t.getTask());
+                System.out.println("(3) Notes: " + t.getNotes());
+                System.out.println("(4) Due Date: " + t.getMonth() + "/" + t.getDay() + t.getYear());
+                System.out.println("(5) Priority: " + t.isPriority());
+                System.out.println("Enter your choice: ");
+                choice2 = s.nextInt();
+            }
+
             System.out.println("What would you like to change it into?");
-            if (num2 == 5) {
+            if (choice2 == 1) {
+                System.out.println("Select a category for your task");
+                for (int i = 0; i < categories.size(); i++) {
+                    System.out.println("(" + i + 1 + ") " + categories.get(i));
+                }
+                int category = s.nextInt();
+                task.get(taskNumChoice).setType(categories.get(category));
+            }
+            if (choice2 == 2) {
+                System.out.println("New Task: ");
+                String newTask = s.nextLine();
+                task.get(taskNumChoice).setTask(newTask);
+            }
+            if (choice2 == 3) {
+                System.out.println("New Note: ");
+                String newNote = s.nextLine();
+                task.get(taskNumChoice).setNote(newNote);
+            }
+            if (choice2 == 5) {
                 System.out.println("(1) yes \n(2) no");
                 int choice = s.nextInt();
                 if (choice == 1) {
-                    task.get(num).setPriority(true);
+                    task.get(choice2).setPriority(true);
                 }
-                else if (choice == 2) {
-                    task.get(num).setPriority(false);
-                }
-                else {
-
+                if (choice == 2) {
+                    task.get(choice2).setPriority(false);
                 }
             }
         }
-        else if (inChoice == 3) {
-            //List task, which task was completed
-
-        }
         else {
-            //list category, change/delete/add option
+            //List task, ask which task was completed
+            for (int i = 0; i < manage.getTask().size(); i++) {
+                System.out.println("(" + i + 1 + ") " + manage.getTask().get(i));
+            }
+            System.out.println("Completed Task: ");
+            int taskChoice = s.nextInt();
+            manage.getTask().remove(taskChoice - 1);
         }
+
     }
 }
