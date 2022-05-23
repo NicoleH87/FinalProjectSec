@@ -24,5 +24,7 @@ public class TaskManager {
         taskList.set(num-1, task);
     }
 
-
+    //Find a way to check past history to record which tasks are typically completed first (maybe based on category and simplicity?)
+    //Program a method which would help the user create a task plan (search up hw efficiency harder first, or easier first)
+    //Accommodate based on the user...maybe for future reference if it is not already too much.
 }
