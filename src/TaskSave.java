@@ -1,10 +1,7 @@
 import java.util.ArrayList;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 
-public class Task {
+/* public class TaskSave {
     private ArrayList<TaskInfo> tasks = new ArrayList<TaskInfo>();
 
     public Task () {}
@@ -36,5 +33,4 @@ public class Task {
         }
     }
 
-     */
-}
+

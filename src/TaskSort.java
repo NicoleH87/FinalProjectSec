@@ -1,11 +1,24 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Date;
+import java.util.Calendar;
 
 public class TaskSort {
-    private int thisYear = 0; // implement later
-    private int thisMonth = 0; // implement later
-    private int thisDay = 0; // implement later
+    private int thisYear; // implement later
+    private int thisMonth; // implement later
+    private int thisDay; // implement later
 
-    public TaskSort() {}
+    public TaskSort() {
+        Date date = new Date();
+        System.out.println(date);	//Tue Feb 15 13:00:31 IST 2022
+
+        Calendar cal = Calendar.getInstance();
+        System.out.println(cal);
+
+    }
 
     public ArrayList<TaskInfo> dueSoon(ArrayList<TaskInfo> task) {
         ArrayList<TaskInfo> soon = new ArrayList<TaskInfo> ();
