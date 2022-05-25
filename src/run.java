@@ -14,7 +14,7 @@ import java.util.Date;
 public class run {
     public static void main(String[] args) {
         Date date = new Date();
-        SimpleDateFormat d = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat d = new SimpleDateFormat("MM/dd/yy");
         System.out.println(d.format(date));
     }
 }

@@ -1,52 +1,60 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+import java.text.ParseException;
+
 import java.util.Date;
 import java.util.Calendar;
+import java.text.DateFormat;
 
 public class TaskSort {
-    private int thisYear; // implement later
-    private int thisMonth; // implement later
-    private int thisDay; // implement later
+    private Date date;
 
     public TaskSort() {
         Date date = new Date();
-        System.out.println(date);	//Tue Feb 15 13:00:31 IST 2022
-
+        this.date = date;
         Calendar cal = Calendar.getInstance();
         System.out.println(cal);
-
     }
 
-    public ArrayList<TaskInfo> dueSoon(ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> dueSoon(ArrayList<TaskInfo> task) throws ParseException {
         ArrayList<TaskInfo> soon = new ArrayList<TaskInfo> ();
         for (int i = 0; i < task.size(); i++) {
-            if (task.get(i).getYear() == thisYear)
+            String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
+            Date compDate = new SimpleDateFormat("MM/dd/yy").parse(dueDate);
+            DateFormat form = new SimpleDateFormat("MM/dd/yy");
+            int currDate = Integer.parseInt(form.format(date));
+            if (date.compareTo(compDate) == 0 || (date.compareTo(compDate) > 0 && task.get(i).getDay() < currDate + 5))
             {
-                if (task.get(i).getMonth() == thisMonth || (task.get(i).getDay() > 25 && task.get(i).getMonth() + 1 == thisMonth)) {
-                    soon.add(task.get(i));
-                }
+                soon.add(task.get(i));
             }
         }
         return soon;
     }
 
-    public ArrayList<TaskInfo> dueLater(ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> dueLater(ArrayList<TaskInfo> task) throws ParseException {
         ArrayList<TaskInfo> later = new ArrayList<TaskInfo>();
         for (int i = 0; i < task.size(); i++) {
-            if (task.get(i).getYear() > thisYear || (task.get(i).getDay() < 25 && task.get(i).getMonth() == thisMonth + 1)) {
+            String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
+            Date compDate = new SimpleDateFormat("MM/dd/yy").parse(dueDate);
+            DateFormat form = new SimpleDateFormat("MM/dd/yy");
+            int currDate = Integer.parseInt(form.format(date));
+            if (date.compareTo(compDate) > 0 && task.get(i).getDay() > currDate + 5)
+            {
                 later.add(task.get(i));
             }
         }
         return later;
     }
 
-    public ArrayList<TaskInfo> dueLate (ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> dueLate (ArrayList<TaskInfo> task) throws ParseException {
         ArrayList<TaskInfo> late = new ArrayList<TaskInfo>();
         for (int i = 0; i < task.size(); i++) {
-            if (task.get(i).getYear() < thisYear || task.get(i).getMonth() < thisMonth || task.get(i).getDay() < thisDay){
+            String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
+            Date compDate = new SimpleDateFormat("MM/dd/yy").parse(dueDate);
+            DateFormat form = new SimpleDateFormat("MM/dd/yy");
+            int currDate = Integer.parseInt(form.format(date));
+            if (date.compareTo(compDate) < 0)
+            {
                 late.add(task.get(i));
             }
         }
@@ -91,8 +99,6 @@ public class TaskSort {
             }
         }
     }
-
-
 }
 
 

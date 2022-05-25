@@ -3,9 +3,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 public class Setup {
     public static void main(String[] args) {
-        String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        Date currentDate = new Date();
+        SimpleDateFormat d = new SimpleDateFormat("MM/dd/yy");
+        System.out.println("Current date: " + d);
+        //String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         ArrayList<String> sections = new ArrayList<String> ();
         TaskManager organize = new TaskManager();
         CreateTask create = new CreateTask();

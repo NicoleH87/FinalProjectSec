@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -24,6 +28,19 @@ public class TaskManager {
         taskList.set(num-1, task);
     }
 
+    public void save() {
+        try {
+            File f = new File("src/taskInfo.data");
+            f.createNewFile();
+            FileWriter fileWrite = new FileWriter("src/taskInfo.data");
+            fileWrite.write(taskList.get(1).getTask());
+            fileWrite.close();
+        }
+        catch (IOException e){
+            System.out.println("Cannot create file.");
+            e.printStackTrace();
+        }
+    }
     //Find a way to check past history to record which tasks are typically completed first (maybe based on category and simplicity?)
     //Program a method which would help the user create a task plan (search up hw efficiency harder first, or easier first)
     //Accommodate based on the user...maybe for future reference if it is not already too much.
