@@ -24,6 +24,26 @@ public class TaskManager {
         }
     }
 
+    public ArrayList<TaskInfo> keyWordSearch (String search) {
+        ArrayList<TaskInfo> result = new ArrayList<TaskInfo> ();
+        for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).getTask().indexOf(search) != -1 || taskList.get(i).getNotes().indexOf(search) != -1) {
+                result.add(taskList.get(i));
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<TaskInfo> typeSearch (String type) {
+        ArrayList<TaskInfo> typesResult = new ArrayList<TaskInfo>();
+        for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).getType().equals(type)) {
+                typesResult.add(taskList.get(i));
+            }
+        }
+        return typesResult;
+    }
+
     public void editTask(int num, TaskInfo task) {
         taskList.set(num-1, task);
     }

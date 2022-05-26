@@ -42,7 +42,7 @@ public class CreateTask {
                 System.out.println("Enter a Year");
                 int year = s.nextInt();
                 System.out.println("Select a Month:");
-                for (int i = 0; i < months.length; i++) {
+                for (int i = 0; i < 12; i++) {
                     System.out.println(i + 1 + months[i]);
                 }
                 int month = s.nextInt();
@@ -158,4 +158,18 @@ public class CreateTask {
             inChoice = s.nextInt();
         }
     }
+
+    public void searchList() {
+        System.out.println("Search: \n(1) key word \n(2) Folder \n(3) Due Date \n(4) Simple \n(5) Priority");
+        Scanner s = new Scanner(System.in);
+        int searchChoice = s.nextInt();
+        if (searchChoice == 1)
+    }
+
+
+
+
+
+
+
 }

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class Setup {
+public class TaskWriter {
     public static void main(String[] args) {
         Date currentDate = new Date();
         SimpleDateFormat d = new SimpleDateFormat("MM/dd/yy");
         System.out.println("Current date: " + d);
-        //String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
         ArrayList<String> sections = new ArrayList<String> ();
         TaskManager organize = new TaskManager();
         CreateTask create = new CreateTask();
@@ -19,6 +19,7 @@ public class Setup {
         try {
             File f = new File("myfile.txt");
             Scanner s = new Scanner(f);
+            create.action(categories);
         }
         catch (FileNotFoundException e) {
             System.out.println(" -----Task Planner----- ");
