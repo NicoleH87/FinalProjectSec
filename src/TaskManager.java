@@ -8,6 +8,22 @@ import java.util.Arrays;
 public class TaskManager {
     private ArrayList<TaskInfo> taskList;
 
+    public void loadTasks() {
+        try {
+            taskList = new ArrayList<TaskInfo>();
+            File f = new File("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
+            Scanner s = new Scanner(f);
+            while (s.hasNextLine()) {
+                String data = s.nextLine();
+                String[] playerInfo = data.split("\\|");
+                Player p = new Player(playerInfo[0], Integer.parseInt(playerInfo[1]));
+                players.add(p);
+            }
+            s.close();
+        } catch (FileNotFoundException fnf) {
+            taskList = new ArrayList<TaskInfo>();
+        }
+    }
     public TaskManager () {
         taskList = new ArrayList<TaskInfo> ();
     }

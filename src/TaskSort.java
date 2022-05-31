@@ -8,15 +8,17 @@ import java.text.DateFormat;
 
 public class TaskSort {
     private Date date;
+    private ArrayList<TaskInfo> task;
 
-    public TaskSort() {
+    public TaskSort(ArrayList<TaskInfo> tasks) {
         Date date = new Date();
         this.date = date;
+        task = tasks;
         Calendar cal = Calendar.getInstance();
         System.out.println(cal);
     }
 
-    public ArrayList<TaskInfo> dueSoon(ArrayList<TaskInfo> task) throws ParseException {
+    public ArrayList<TaskInfo> dueSoon() throws ParseException {
         ArrayList<TaskInfo> soon = new ArrayList<TaskInfo> ();
         for (int i = 0; i < task.size(); i++) {
             String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
@@ -31,7 +33,7 @@ public class TaskSort {
         return soon;
     }
 
-    public ArrayList<TaskInfo> dueLater(ArrayList<TaskInfo> task) throws ParseException {
+    public ArrayList<TaskInfo> dueLater() throws ParseException {
         ArrayList<TaskInfo> later = new ArrayList<TaskInfo>();
         for (int i = 0; i < task.size(); i++) {
             String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
@@ -46,7 +48,7 @@ public class TaskSort {
         return later;
     }
 
-    public ArrayList<TaskInfo> dueLate (ArrayList<TaskInfo> task) throws ParseException {
+    public ArrayList<TaskInfo> dueLate () throws ParseException {
         ArrayList<TaskInfo> late = new ArrayList<TaskInfo>();
         for (int i = 0; i < task.size(); i++) {
             String dueDate = "" + task.get(i).getMonth() + task.get(i).getDay() + task.get(i).getYear();
@@ -61,7 +63,7 @@ public class TaskSort {
         return late;
     }
 
-    public ArrayList<TaskInfo> typeTasks (String type, ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> typeTasks (String type) {
         ArrayList<TaskInfo> thisType = new ArrayList<TaskInfo>();
         for (TaskInfo t : task) {
             if (t.getType().equals(type)) {
@@ -71,7 +73,7 @@ public class TaskSort {
         return thisType;
     }
 
-    public ArrayList<TaskInfo> simpleTasks (ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> simpleTasks () {
         ArrayList<TaskInfo> simpleTask = new ArrayList<TaskInfo>();
         for (TaskInfo t: task) {
             if (t.isSimple() == true) {
@@ -81,7 +83,7 @@ public class TaskSort {
         return simpleTask;
     }
 
-    public ArrayList<TaskInfo> difficultTasks (ArrayList<TaskInfo> task) {
+    public ArrayList<TaskInfo> difficultTasks () {
         ArrayList<TaskInfo> hard = new ArrayList<TaskInfo>();
         for (TaskInfo t : task) {
             if (t.isSimple() == false) {
@@ -91,11 +93,10 @@ public class TaskSort {
         return hard;
     }
 
-    public void keyWord (ArrayList<TaskInfo> task, String word) {
+    public void keyWord (String word) {
         for (TaskInfo t : task) {
             if (t.getNotes().indexOf(word) > -1 || t.getTask().indexOf(word) > -1) {
                 t.print();
-                System.out.println();
             }
         }
     }
