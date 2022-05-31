@@ -2,7 +2,6 @@ import java.text.ParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
 public class TaskWriter {
     public static void main(String[] args) throws ParseException {
         ArrayList<String> categories = new ArrayList<String> ();
@@ -11,60 +10,69 @@ public class TaskWriter {
             Scanner s = new Scanner(System.in);
             int inChoice = 0;
             System.out.println("What action would you like to commit to? Enter 0 to end program.");
-            System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4)Generate To-Do List");
+            System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4) Generate To-Do List");
             inChoice = s.nextInt();
             while (inChoice != 0) {
                 if (inChoice > 0 && inChoice < 5) {
                     if (inChoice == 1) {
                         //copy and paste
+                        Scanner y = new Scanner(System.in);
                         System.out.println("Enter a category for your task: ");
-                        String type = s.nextLine();
+                        String type = y.nextLine();
 
                         System.out.println("Enter task you would like to add: ");
-                        String task = s.nextLine();
+                        String task = y.nextLine();
                         System.out.println("Add any additional notes? (yes/no)");
-                        String choice = s.nextLine();
+                        String choice = y.nextLine();
                         String note = "";
                         if (choice.toLowerCase().equals("yes")) {
                             System.out.println("Note: ");
-                            note = s.nextLine();
+                            note = y.nextLine();
                         }
                         System.out.println();
                         System.out.println("Due date");
                         System.out.println("Enter a Year:");
-                        int year = s.nextInt();
+                        String tempYear = y.nextLine();
+                        int year = Integer.parseInt(tempYear);
                         System.out.println("Select a Month:");
                         for (int i = 0; i < 12; i++) {
-                            System.out.println("(" + i + 1 + ") " + months[i]);
+                            int num = i + 1;
+                            System.out.println("(" + num + ") " + months[i]);
                         }
-                        int month = s.nextInt();
+                        String tempMonth = y.nextLine();
+                        int month = Integer.parseInt(tempMonth);
                         System.out.println("Enter a date");
-                        int date = s.nextInt();
+                        String temp = y.nextLine();
+                        int date = Integer.parseInt(temp);
                         if (month == 2) {
                             if (year % 4 == 0) {
                                 while (date < 0 && date > 29) {
                                     System.out.println("Your date is inaccurate. Please enter an accurate date.");
                                     System.out.println("Enter a date: ");
-                                    date = s.nextInt();
+                                    temp = y.nextLine();
+                                    date = Integer.parseInt(temp);
                                 }
                             } else {
                                 while (date < 0 && date > 28) {
                                     System.out.println("Your date is inaccurate. Please enter an accurate date.");
                                     System.out.println("Enter a date: ");
-                                    date = s.nextInt();
+                                    temp = y.nextLine();
+                                    date = Integer.parseInt(temp);
                                 }
                             }
                         } else if ((month < 8 && month % 2 == 1) || (month > 7 && month % 2 == 0)) {
                             while (date < 0 && date > 31) {
                                 System.out.println("Your date is inaccurate. Please enter an accurate date.");
                                 System.out.println("Enter a date: ");
-                                date = s.nextInt();
+                                temp = y.nextLine();
+                                date = Integer.parseInt(temp);
                             }
                         } else {
                             while (date < 0 && date > 30) {
                                 System.out.println("Your date is inaccurate. Please enter an accurate date.");
                                 System.out.println("Enter a date: ");
-                                date = s.nextInt();
+                                temp = y.nextLine();
+                                date = Integer.parseInt(temp);
                             }
                         }
                         System.out.println("is Priority? (y/n)");
@@ -87,8 +95,8 @@ public class TaskWriter {
                         int taskNumChoice = 0;
                         ArrayList<TaskInfo> task = manage.getTask();
                         while (taskNumChoice <= task.size() && taskNumChoice > 0) {
-                            for (int i = 0; i < task.size(); i++) {
-                                System.out.println("(" + i + 1 + ") " + task.get(i).getTask());
+                            for (int i = 1; i <= task.size(); i++) {
+                                System.out.println("(" + i + ") " + task.get(i).getTask());
                             }
                             System.out.println("Select task to edit: ");
                             taskNumChoice = s.nextInt();
