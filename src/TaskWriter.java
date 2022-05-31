@@ -76,13 +76,13 @@ public class TaskWriter {
                             }
                         }
                         System.out.println("is Priority? (y/n)");
-                        String pString = s.nextLine();
+                        String pString = y.nextLine();
                         boolean priority = false;
                         if (pString.equals("y")) {
                             priority = true;
                         }
                         System.out.println("Simple task? (y/n)");
-                        String sString = s.nextLine();
+                        String sString = y.nextLine();
                         boolean simple = false;
                         if (sString.equals("y")) {
                             simple = true;
@@ -211,9 +211,7 @@ public class TaskWriter {
                             }
                         }
                     }
-                    System.out.println("What action would you like to commit to?");
-                    System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4)Generate To-Do List");
-                    inChoice = s.nextInt();
+
                 }
                 else {
                     System.out.println("Input choice invalid.");
@@ -221,6 +219,9 @@ public class TaskWriter {
                     System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4)Generate To-Do List");
                     inChoice = s.nextInt();
                 }
+                System.out.println("What action would you like to commit to? Enter 0 to end program.");
+                System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4) Generate To-Do List");
+                inChoice = s.nextInt();
             }
             manage.save();
             System.out.println("Program Terminated");
