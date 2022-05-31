@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class TaskManager {
     private ArrayList<TaskInfo> taskList;
 
@@ -28,7 +25,7 @@ public class TaskManager {
         }
     }
     public TaskManager () {
-        taskList = new ArrayList<TaskInfo> ();
+        loadTasks();
     }
 
     public void addTask(TaskInfo task) {
@@ -65,6 +62,7 @@ public class TaskManager {
 
     public void editTask(int num, TaskInfo task) {
         taskList.set(num-1, task);
+        save();
     }
 
     public void save() {
