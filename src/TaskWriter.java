@@ -1,11 +1,7 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class TaskWriter {
     public static void main(String[] args) throws ParseException {
@@ -90,6 +86,7 @@ public class TaskWriter {
                         }
                         TaskInfo newTask = new TaskInfo(task, note, month, date, year, priority, simple, type);
                         manage.addTask(newTask);
+                        manage.save();
                     } else if (inChoice == 2) {
                         //List tasks and their info (in a particular print format), choices on which to edit, confirmation of editing, confirmation and restating initial
                         int taskNumChoice = 0;
@@ -144,6 +141,7 @@ public class TaskWriter {
                                 task.get(choice2).setPriority(false);
                             }
                         }
+                        manage.save();
                     } else if (inChoice == 3){
                         //List task, ask which task was completed
                         for (int i = 0; i < manage.getTask().size(); i++) {
@@ -152,6 +150,7 @@ public class TaskWriter {
                         System.out.println("Completed Task: ");
                         int taskChoice = s.nextInt();
                         manage.getTask().remove(taskChoice - 1);
+                        manage.save();
                     }
                     else {
                         System.out.println("List Options: ");
