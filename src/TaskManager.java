@@ -1,6 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,9 +18,9 @@ public class TaskManager {
             Scanner s = new Scanner(f);
             while (s.hasNextLine()) {
                 String data = s.nextLine();
-                String[] playerInfo = data.split("\\|");
-                Player p = new Player(playerInfo[0], Integer.parseInt(playerInfo[1]));
-                players.add(p);
+                String[] taskIn = data.split("\\|");
+                TaskInfo task = new TaskInfo(taskIn[0], taskIn[1], Integer.parseInt(taskIn[2]), Integer.parseInt(taskIn[3]), Integer.parseInt(taskIn[4]), taskIn[5].toLowerCase().equals("true"), taskIn[6].toLowerCase().equals("true"), taskIn[7]);
+                taskList.add(task);
             }
             s.close();
         } catch (FileNotFoundException fnf) {
@@ -66,11 +69,15 @@ public class TaskManager {
 
     public void save() {
         try {
-            File f = new File("src/taskInfo.data");
+            File f = new File("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
             f.createNewFile();
-            FileWriter fileWrite = new FileWriter("src/taskInfo.data");
-            fileWrite.write(taskList.get(1).getTask());
-            fileWrite.close();
+            FileWriter fw = new FileWriter("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
+            String data = "";
+            for (int i = 0; i < taskList.size(); i++) {
+                data = taskList.get(i).getTask() + "|" + taskList.get(i).getNotes() + "|" + taskList.get(i).getMonth() + "|" + taskList.get(i).getDay()  + "|" + taskList.get(i).getYear() + "|" + taskList.get(i).isPriority()  + "|" + taskList.get(i).isSimple()  + "|" + taskList.get(i).getType();
+                fw.write(data + "\n");
+            }
+            fw.close();
         }
         catch (IOException e){
             System.out.println("Cannot create file.");
