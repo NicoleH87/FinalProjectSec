@@ -17,17 +17,12 @@ public class TaskWriter {
                 if (inChoice > 0 && inChoice < 5) {
                     if (inChoice == 1) {
                         //copy and paste
-                        System.out.println("Select a category for your task");
-                        for (int i = 0; i < categories.size(); i++) {
-                            System.out.println("(" + i + 1 + ") " + categories.get(i));
-                        }
-                        int category = s.nextInt();
-                        String type = categories.get(category);
+                        System.out.println("Enter a category for your task: ");
+                        String type = s.nextLine();
 
-                        System.out.println("What task would you like to add?");
-
+                        System.out.println("Enter task you would like to add: ");
                         String task = s.nextLine();
-                        System.out.println("Would you like to add any notes");
+                        System.out.println("Add any additional notes? (yes/no)");
                         String choice = s.nextLine();
                         String note = "";
                         if (choice.toLowerCase().equals("yes")) {
@@ -36,11 +31,11 @@ public class TaskWriter {
                         }
                         System.out.println();
                         System.out.println("Due date");
-                        System.out.println("Enter a Year");
+                        System.out.println("Enter a Year:");
                         int year = s.nextInt();
                         System.out.println("Select a Month:");
                         for (int i = 0; i < 12; i++) {
-                            System.out.println(i + 1 + months[i]);
+                            System.out.println("(" + i + 1 + ") " + months[i]);
                         }
                         int month = s.nextInt();
                         System.out.println("Enter a date");
@@ -93,7 +88,7 @@ public class TaskWriter {
                         ArrayList<TaskInfo> task = manage.getTask();
                         while (taskNumChoice <= task.size() && taskNumChoice > 0) {
                             for (int i = 0; i < task.size(); i++) {
-                                System.out.println("(" + i + 1 + ") " + task.get(i));
+                                System.out.println("(" + i + 1 + ") " + task.get(i).getTask());
                             }
                             System.out.println("Select task to edit: ");
                             taskNumChoice = s.nextInt();
@@ -114,12 +109,9 @@ public class TaskWriter {
 
                         System.out.println("What would you like to change it into?");
                         if (choice2 == 1) {
-                            System.out.println("Select a category for your task");
-                            for (int i = 0; i < categories.size(); i++) {
-                                System.out.println("(" + i + 1 + ") " + categories.get(i));
-                            }
-                            int category = s.nextInt();
-                            task.get(taskNumChoice).setType(categories.get(category));
+                            System.out.println("Enter a category for your task: ");
+                            String category = s.nextLine();
+                            task.get(taskNumChoice).setType(category);
                         }
                         if (choice2 == 2) {
                             System.out.println("New Task: ");
@@ -144,8 +136,9 @@ public class TaskWriter {
                         manage.save();
                     } else if (inChoice == 3){
                         //List task, ask which task was completed
-                        for (int i = 0; i < manage.getTask().size(); i++) {
-                            System.out.println("(" + i + 1 + ") " + manage.getTask().get(i));
+                        ArrayList<TaskInfo> task = manage.getTask();
+                        for (int i = 0; i < task.size(); i++) {
+                            System.out.println("(" + i + 1 + ") " + task.get(i).getTask());
                         }
                         System.out.println("Completed Task: ");
                         int taskChoice = s.nextInt();
@@ -221,5 +214,7 @@ public class TaskWriter {
                     inChoice = s.nextInt();
                 }
             }
+            manage.save();
+            System.out.println("Program Terminated");
     }
 }
