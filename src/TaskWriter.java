@@ -95,11 +95,12 @@ public class TaskWriter {
                         int taskNumChoice = 0;
                         ArrayList<TaskInfo> task = manage.getTask();
                         while (taskNumChoice <= task.size() && taskNumChoice > 0) {
-                            for (int i = 1; i <= task.size(); i++) {
+                            for (int i = 0; i <= task.size(); i++) {
                                 System.out.println("(" + i + ") " + task.get(i).getTask());
                             }
                             System.out.println("Select task to edit: ");
-                            taskNumChoice = s.nextInt();
+                            String choice = s.nextLine();
+                            taskNumChoice = Integer.parseInt(choice);
                         }
 
                         //Check between range of options
