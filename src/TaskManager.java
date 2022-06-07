@@ -11,7 +11,7 @@ public class TaskManager {
     public void loadTasks() {
         try {
             taskList = new ArrayList<TaskInfo>();
-            File f = new File("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
+            File f = new File("src/tasks.data");
             Scanner s = new Scanner(f);
             while (s.hasNextLine()) {
                 String data = s.nextLine();
@@ -67,9 +67,9 @@ public class TaskManager {
 
     public void save() {
         try {
-            File f = new File("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
+            File f = new File("src/tasks.data");
             f.createNewFile();
-            FileWriter fw = new FileWriter("/Users/nicol/IdeaProjects/TaskPlanner/src/tasks.data");
+            FileWriter fw = new FileWriter("src/tasks.data");
             String data = "";
             for (int i = 0; i < taskList.size(); i++) {
                 data = taskList.get(i).getTask() + "|" + taskList.get(i).getNotes() + "|" + taskList.get(i).getMonth() + "|" + taskList.get(i).getDay()  + "|" + taskList.get(i).getYear() + "|" + taskList.get(i).isPriority()  + "|" + taskList.get(i).isSimple()  + "|" + taskList.get(i).getType();
