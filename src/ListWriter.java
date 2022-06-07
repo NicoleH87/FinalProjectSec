@@ -257,6 +257,10 @@ public class ListWriter {
                     input = Integer.parseInt(actionChoice);
                     System.out.println();
                 }
+                /*for (int i = 0; i < manage.getTask().size(); i++) {
+                    manage.getTask().get(i).print();
+                }
+                */
                 System.out.println("What action would you like to commit to? Enter 0 to end program.");
                 System.out.println("(1) Add Task \n(2) Edit Task or Info \n(3) Complete task \n(4) Generate List");
                 System.out.print("Enter action: ");
