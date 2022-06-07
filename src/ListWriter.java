@@ -93,6 +93,7 @@ public class ListWriter {
                         TaskInfo newTask = new TaskInfo(task, note, month, date, year, priority, simple, type);
                         manage.addTask(newTask);
                         manage.save();
+                        System.out.println();
                     } else if (input == 2) {
                         int taskNumChoice = 0;
                         ArrayList<TaskInfo> task = manage.getTask();
